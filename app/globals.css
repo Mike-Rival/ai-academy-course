@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --fg: #0f172a;
+  --muted: #64748b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --fg: #e2e8f0;
+    --muted: #94a3b8;
+  }
+}
+
+html, body { background: var(--bg); color: var(--fg); }
+
+.prose-lesson p { @apply leading-relaxed my-4; }
+.prose-lesson h1 { @apply text-3xl font-bold mt-8 mb-4; }
+.prose-lesson h2 { @apply text-2xl font-semibold mt-8 mb-3; }
+.prose-lesson h3 { @apply text-xl font-semibold mt-6 mb-2; }
+.prose-lesson ul { @apply list-disc list-inside my-4 space-y-1; }
+.prose-lesson ol { @apply list-decimal list-inside my-4 space-y-1; }
+.prose-lesson code:not(pre code) { @apply px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[0.9em]; }
+.prose-lesson pre { @apply bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto my-4; }
+.prose-lesson blockquote { @apply border-l-4 border-brand-500 pl-4 italic my-4 text-slate-600 dark:text-slate-300; }
+.prose-lesson a { @apply text-brand-600 underline hover:text-brand-700; }
