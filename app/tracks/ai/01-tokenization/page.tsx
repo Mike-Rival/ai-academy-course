@@ -136,22 +136,14 @@ print(most_common_pair({("l","o"): 5, ("h","e"): 3, ("l","l"): 5}))
         ]}
         hint={
           <>
-            Use <code>max(counts, key=...)</code> with a tuple key that
-            prioritizes count descending, then pair ascending.
+            Find the highest count, collect every pair tied at that count,
+            and return the alphabetically smallest one.
           </>
         }
         solution={`def most_common_pair(counts):
-    return max(counts, key=lambda p: (counts[p], -ord(p[0][0]) if p[0] else 0, -ord(p[1][0]) if p[1] else 0))
-
-# Simpler and more robust:
-def most_common_pair(counts):
-    return max(counts.items(), key=lambda kv: (kv[1], -ord(kv[0][0][0]) - ord(kv[0][1][0])))[0]
-
-# Cleanest:
-def most_common_pair(counts):
     max_count = max(counts.values())
-    best = [p for p, c in counts.items() if c == max_count]
-    return sorted(best)[0]
+    tied = [p for p, c in counts.items() if c == max_count]
+    return sorted(tied)[0]
 
 print(most_common_pair({("l","o"): 5, ("h","e"): 3, ("l","l"): 5}))
 `}

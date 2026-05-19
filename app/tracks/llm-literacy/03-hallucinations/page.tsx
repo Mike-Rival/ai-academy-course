@@ -50,13 +50,16 @@ export default function Page() {
         of verifying.
       </p>
 
-      <h3>Case 2: The medical summary that flipped a sign</h3>
+      <h3>Case 2: The summary that flipped a sign</h3>
       <p>
-        A common failure pattern in medical-summary studies: a model summarizes a
-        chart correctly except for inverting a single critical detail —
-        &ldquo;patient denies chest pain&rdquo; becomes &ldquo;patient reports chest
-        pain,&rdquo; or a dosage is rendered as 5mg instead of 50mg. The summary
-        otherwise reads as competent. The error is buried in plausible context.
+        A representative failure pattern (reconstructed here from the broader
+        class of negation-flip and numeric-error reports documented across LLM
+        evaluations): a model summarizes a long document correctly except for
+        inverting a single critical detail. &ldquo;Patient denies chest
+        pain&rdquo; becomes &ldquo;patient reports chest pain.&rdquo; A dosage
+        of 50mg is rendered as 5mg. A clause stating one side&rsquo;s position
+        gets attached to the other side. The summary otherwise reads as
+        competent. The error is buried in plausible context.
       </p>
       <p>
         <strong>What looked plausible:</strong> Correct structure, correct

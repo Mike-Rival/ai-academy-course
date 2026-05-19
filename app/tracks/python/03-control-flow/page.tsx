@@ -49,88 +49,87 @@ else:
 if not is_member:
     print("please sign up")`}</code></pre>
 
+      <p>
+        For exercises that need to be tested against several inputs, we&rsquo;ll
+        wrap the logic in a function. You&rsquo;ll see <code>def</code> formally
+        in the next lesson — for now, treat <code>def name(arg):</code> as
+        &ldquo;a named block of code I can call with different values.&rdquo;
+      </p>
+
       <CodeExercise
         exerciseId="python/03-control-flow/grade"
         prompt={
           <>
-            Given a <code>score</code> from 0 to 100, set <code>grade</code> to:
+            Complete the function <code>letter_grade(score)</code>. Given a
+            score from 0 to 100, return:
             <br />
             <code>&quot;A&quot;</code> if 90+, <code>&quot;B&quot;</code> if 80–89,{' '}
             <code>&quot;C&quot;</code> if 70–79, <code>&quot;D&quot;</code> if 60–69,
             otherwise <code>&quot;F&quot;</code>.
           </>
         }
-        starterCode={`score = 84
+        starterCode={`def letter_grade(score):
+    pass  # replace this with your if/elif/else logic
 
-grade = ""
-
-# your code here
-
-print(grade)
+# quick check
+print(letter_grade(84))
+print(letter_grade(72))
+print(letter_grade(45))
 `}
         tests={[
-          {
-            name: 'score=84 → B',
-            code: 'score = 84\nexec(_user_code)\nassert grade == "B"',
-            hint: 'Make sure your conditions cover 80 through 89 inclusive.',
-          },
-          {
-            name: 'score=72 → C',
-            code: 'score = 72\nexec(_user_code)\nassert grade == "C"',
-          },
-          {
-            name: 'score=45 → F',
-            code: 'score = 45\nexec(_user_code)\nassert grade == "F"',
-          },
+          { name: '84 → B', code: 'assert letter_grade(84) == "B"', hint: "Make sure your conditions cover 80 through 89 inclusive." },
+          { name: '72 → C', code: 'assert letter_grade(72) == "C"' },
+          { name: '45 → F', code: 'assert letter_grade(45) == "F"' },
+          { name: '90 → A (edge case)', code: 'assert letter_grade(90) == "A"' },
+          { name: '60 → D (edge case)', code: 'assert letter_grade(60) == "D"' },
         ]}
-        hint={<>Use a chain of <code>if</code> / <code>elif</code>, with <code>else</code> for F.</>}
-        solution={`score = 84
+        hint={
+          <>
+            Inside the function: a chain of <code>if</code> / <code>elif</code>{' '}
+            checks, each returning the right letter. Don&rsquo;t forget to{' '}
+            <code>return</code> from each branch.
+          </>
+        }
+        solution={`def letter_grade(score):
+    if score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    elif score >= 60:
+        return "D"
+    else:
+        return "F"
 
-if score >= 90:
-    grade = "A"
-elif score >= 80:
-    grade = "B"
-elif score >= 70:
-    grade = "C"
-elif score >= 60:
-    grade = "D"
-else:
-    grade = "F"
-
-print(grade)
+print(letter_grade(84))
+print(letter_grade(72))
+print(letter_grade(45))
 `}
       />
-
-      <h2>A note on the tests above</h2>
-      <p>
-        Those test snippets use a small trick: they re-run your code with different
-        values of <code>score</code> by setting the variable and re-executing. You
-        don&rsquo;t need to understand this to do the exercise — just write straight
-        line code as you normally would.
-      </p>
 
       <CodeExercise
         exerciseId="python/03-control-flow/leap-year"
         prompt={
           <>
-            Set <code>is_leap</code> to <code>True</code> if <code>year</code> is a
-            leap year. Rule: divisible by 4, except centuries which must be divisible
-            by 400. So 2000 is leap, 1900 is not, 2024 is.
+            Complete <code>is_leap(year)</code>. Return <code>True</code> if{' '}
+            <code>year</code> is a leap year. Rule: divisible by 4, except
+            centuries which must be divisible by 400. So 2000 is leap, 1900 is
+            not, 2024 is.
           </>
         }
-        starterCode={`year = 2024
+        starterCode={`def is_leap(year):
+    pass  # return True or False
 
-is_leap = False
-
-# your code here
-
-print(is_leap)
+print(is_leap(2024))
+print(is_leap(1900))
+print(is_leap(2000))
 `}
         tests={[
-          { name: '2024 is leap', code: 'year=2024\nexec(_user_code)\nassert is_leap is True' },
-          { name: '1900 is not leap', code: 'year=1900\nexec(_user_code)\nassert is_leap is False' },
-          { name: '2000 is leap', code: 'year=2000\nexec(_user_code)\nassert is_leap is True' },
-          { name: '2023 is not leap', code: 'year=2023\nexec(_user_code)\nassert is_leap is False' },
+          { name: '2024 is leap', code: 'assert is_leap(2024) is True' },
+          { name: '1900 is not leap', code: 'assert is_leap(1900) is False' },
+          { name: '2000 is leap', code: 'assert is_leap(2000) is True' },
+          { name: '2023 is not leap', code: 'assert is_leap(2023) is False' },
         ]}
         hint={
           <>
@@ -139,11 +138,12 @@ print(is_leap)
             <em> n</em> when <code>x % n == 0</code>.
           </>
         }
-        solution={`year = 2024
+        solution={`def is_leap(year):
+    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
 
-is_leap = (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
-
-print(is_leap)
+print(is_leap(2024))
+print(is_leap(1900))
+print(is_leap(2000))
 `}
       />
 
