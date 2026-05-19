@@ -21,14 +21,14 @@ const tracks: Track[] = [
     title: 'Machine Learning Basics',
     subtitle: 'Regression, classification, evaluation, pipelines — with scikit-learn.',
     audience: 'For learners comfortable with Python who want practical ML.',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     slug: 'ai',
     title: 'AI & Deep Learning',
     subtitle: 'Tokenization, embeddings, transformers, using pre-trained models.',
     audience: 'For learners who know ML basics and want to understand modern AI.',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     slug: 'llm-literacy',
@@ -36,7 +36,7 @@ const tracks: Track[] = [
     subtitle:
       'Risk literacy for the workplace. How LLMs fail, when to trust them, when not to.',
     audience: 'No coding required. For everyone who uses or evaluates AI tools at work.',
-    status: 'coming-soon',
+    status: 'available',
   },
 ];
 

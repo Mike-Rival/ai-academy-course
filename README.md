@@ -4,12 +4,14 @@ Interactive, browser-based course covering Python, ML (scikit-learn), AI (transf
 
 ## Status
 
-This is a scaffold with **two reference lessons** wired end-to-end:
+**All 44 lessons authored** across four tracks:
 
-- **Python Basics, Lesson 1: Variables and Printing** — demonstrates the `CodeExercise` component (Monaco editor + Pyodide test runner).
-- **Working with LLMs, Lesson 1: What LLMs Actually Do** — demonstrates the `NonCodeExercise` components (multiple choice, reflection).
+- **Python Basics** (10): variables → types → control flow → loops → functions → lists/dicts → files/strings → numpy → pandas → mini project.
+- **Machine Learning Basics** (10): what-is-ML → linear regression → classification → train/test split → cross-validation → trees & forests → clustering → pipelines → feature engineering → end-to-end project.
+- **AI & Deep Learning** (10): tokenization → embeddings → attention → transformer architecture → pre-trained models → fine-tuning concepts → prompting → RAG basics → evaluation → capstone.
+- **Working with LLMs** (14, no coding required): how LLMs work → trust calibration → hallucinations → conversation rot → citations → unverifiability trap → self-judgment → validation framework → mitigations → reading claims critically → where they help → privacy → prompting hygiene → capstone.
 
-The rest of the curriculum is sketched in [`lib/curriculum.ts`](./lib/curriculum.ts) but lessons are marked `coming-soon` until written.
+Each lesson is fully interactive: code lessons run real Python in the browser with auto-graded exercises; non-code lessons use multiple choice, categorize, and reflection components.
 
 ## Stack
 

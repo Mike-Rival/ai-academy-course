@@ -1,0 +1,206 @@
+import LessonShell from '@/components/LessonShell';
+import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
+import { getLessonNav } from '@/lib/curriculum';
+
+export const metadata = {
+  title: 'Models Cannot Judge Themselves — Credence AI Academy',
+};
+
+export default function Page() {
+  const nav = getLessonNav('llm-literacy', '07-self-judgment');
+  return (
+    <LessonShell
+      lessonId="llm-literacy/07-self-judgment"
+      trackLabel="Working with LLMs"
+      trackHref="/tracks/llm-literacy"
+      title="Models Cannot Judge Themselves"
+      estMinutes={10}
+      nav={nav}
+    >
+      <p>
+        A natural instinct, when you&rsquo;re unsure about an LLM&rsquo;s output, is
+        to ask the model itself: &ldquo;Are you sure?&rdquo; or &ldquo;How
+        confident are you?&rdquo; or &ldquo;Rate this 1–10.&rdquo;
+      </p>
+      <p>
+        This doesn&rsquo;t work. Not in a finicky-implementation-detail sense, but
+        in a fundamental sense: <strong>the model has no privileged access to the
+        correctness of its own output</strong>.
+      </p>
+
+      <h2>Why self-grading fails</h2>
+      <p>
+        When you ask &ldquo;are you sure?&rdquo; the model runs the same machinery
+        that produced the original answer. There&rsquo;s no separate verification
+        module. The follow-up just generates more text — text shaped by:
+      </p>
+      <ul>
+        <li>The original answer (now in the conversation history).</li>
+        <li>Your tone (questioning suggests doubt → sycophancy kicks in).</li>
+        <li>Training patterns about what &ldquo;showing uncertainty&rdquo; looks like.</li>
+      </ul>
+      <p>
+        The result reads like a calibrated answer (&ldquo;I&rsquo;m about 80% sure
+        because…&rdquo;) but the number is not anchored to anything. The model is
+        not running an internal estimate of correctness and reporting it. It is
+        generating the next plausible tokens in a conversation where someone just
+        asked about confidence.
+      </p>
+
+      <h2>What about confidence scores from the API?</h2>
+      <p>
+        Some LLM APIs expose token-level probabilities, or
+        &ldquo;logprobs.&rdquo; These are <em>more</em> meaningful than asking the
+        model in chat, but still not what you want. They tell you how strongly the
+        model preferred its chosen token over alternatives — they don&rsquo;t tell
+        you whether the chosen token is factually correct. A model can be highly
+        confident in a wrong answer and uncertain about a right one.
+      </p>
+      <p>
+        Logprobs are useful as a signal for &ldquo;which parts of this output were
+        the model less sure of?&rdquo; — but not as a calibrated probability of
+        truth.
+      </p>
+
+      <h2>What about &ldquo;LLM-as-judge&rdquo; setups?</h2>
+      <p>
+        A common pattern in AI products: use one LLM to generate, and another LLM
+        (or the same one with a different prompt) to grade. This works
+        <em> better than asking the same model in the same conversation</em>, but
+        it inherits all the same failure modes. The judge model has no privileged
+        access to ground truth either. It can be wrong about the same things, or
+        wrong in correlated ways. Use it as a weak signal, not as evaluation.
+      </p>
+      <p>
+        For real evaluation, you need <strong>external grounding</strong>: a
+        known-correct answer to compare against, a deterministic test (does the
+        code pass?), a measurable outcome (did the prediction match what
+        happened?), or a human with the relevant expertise.
+      </p>
+
+      <h2>The general principle</h2>
+      <blockquote>
+        If you can&rsquo;t verify an output any way <em>except</em> by asking the
+        same kind of system to confirm it, you haven&rsquo;t verified it.
+      </blockquote>
+      <p>
+        This applies to humans too, by the way — if your only source on a fact is
+        someone&rsquo;s memory of having said it before, you haven&rsquo;t
+        verified it. The principle is independent of whether the source is human
+        or model.
+      </p>
+
+      <MultipleChoice
+        exerciseId="llm-literacy/07/quiz-1"
+        prompt={
+          <>
+            An LLM answers a question and then volunteers,
+            &ldquo;I&rsquo;m 95% confident in this answer.&rdquo; What&rsquo;s the
+            most accurate read of that statement?
+          </>
+        }
+        options={[
+          {
+            id: 'a',
+            text: 'The model has calibrated its uncertainty internally and is reporting it.',
+            rationale:
+              'No — that is what the sentence sounds like, but no such internal calibration is happening in a way that produces a meaningful number.',
+          },
+          {
+            id: 'b',
+            text: 'A number in the right format, generated by the same machinery as the answer — not a probability of correctness.',
+            correct: true,
+            rationale:
+              'Right. The number is plausible-looking text, not a measurement of anything.',
+          },
+          {
+            id: 'c',
+            text: 'It is roughly accurate — across many such answers, ones marked 95% would be right about 95% of the time.',
+            rationale:
+              'Empirically, LLM self-reported confidence is poorly calibrated. The numbers don\'t track accuracy reliably enough to trust.',
+          },
+          {
+            id: 'd',
+            text: 'It is meaningless and can be ignored entirely.',
+            rationale:
+              'Not entirely useless — it is weak evidence about how out-of-distribution the question feels to the model. But it is not a calibrated probability.',
+          },
+        ]}
+      />
+
+      <MultipleChoice
+        exerciseId="llm-literacy/07/quiz-2"
+        prompt={
+          <>
+            Your team builds an internal tool that uses GPT-4 to summarize
+            documents, with a second GPT-4 call to grade each summary &ldquo;1–5
+            for accuracy.&rdquo; The grades are routinely 4s and 5s. What&rsquo;s
+            the strongest critique of this evaluation setup?
+          </>
+        }
+        options={[
+          {
+            id: 'a',
+            text: 'GPT-4 is biased toward its own outputs; you should use a different model as the judge.',
+            rationale:
+              'Mild improvement at best. The deeper issue is that no LLM judge has access to ground truth — using a different model just gets you a differently-biased judge.',
+          },
+          {
+            id: 'b',
+            text: 'The judge has no access to the original source documents — only the summary — so it cannot evaluate accuracy.',
+            rationale:
+              'A specific real problem in this setup, but even with the source documents the judge would still be evaluating "does this look right" not "is this right."',
+          },
+          {
+            id: 'c',
+            text: 'The judge is grading whether the summary "looks like a good summary," not whether it accurately reflects the source. To evaluate accuracy you need an external check — a human, a known-correct reference, or a deterministic metric.',
+            correct: true,
+            rationale:
+              'Correct. The judge can only assess surface features. Real accuracy evaluation requires external grounding.',
+          },
+          {
+            id: 'd',
+            text: 'A 1–5 scale is too coarse; use 1–10.',
+            rationale:
+              'Resolution of the scale is irrelevant if the underlying signal is not measuring accuracy.',
+          },
+        ]}
+      />
+
+      <Reflection
+        exerciseId="llm-literacy/07/reflection"
+        prompt={
+          <>
+            Think of an AI feature or workflow you&rsquo;ve seen at your
+            organization (or in a product) that relies on the AI checking its own
+            output. What&rsquo;s the &ldquo;external grounding&rdquo; that would
+            actually validate it? Is that grounding in place? If not, what would
+            it take to add it?
+          </>
+        }
+        modelAnswer={
+          <>
+            <p>
+              Common patterns to watch for: confidence scores shown to users as if
+              they meant something. &ldquo;Self-review&rdquo; steps that ask the
+              model to check its own work. &ldquo;Quality scores&rdquo; produced
+              by another LLM call. All of these are mitigations at best and
+              decoration at worst.
+            </p>
+            <p>
+              Real grounding is harder and costs more: a human reviewer, a
+              comparison against a labeled dataset, a downstream metric (did the
+              ticket actually resolve? did the customer come back?). The
+              uncomfortable truth is that good evaluation is more expensive than
+              the feature being evaluated.
+            </p>
+          </>
+        }
+      />
+
+      <p className="text-sm text-slate-500 mt-8">
+        Up next: a decision framework that pulls everything together.
+      </p>
+    </LessonShell>
+  );
+}
