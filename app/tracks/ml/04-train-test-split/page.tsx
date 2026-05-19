@@ -2,7 +2,7 @@ import LessonShell from '@/components/LessonShell';
 import CodeExercise from '@/components/CodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'Train/Test Split — Credence AI Academy' };
+export const metadata = { title: 'Train/Test Split — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('ml', '04-train-test-split');

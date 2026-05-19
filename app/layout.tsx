@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { VERSION, UPDATED } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Credence AI Academy',
+  title: 'AI Academy',
   description:
     'Interactive Python, ML, AI, and LLM-literacy training — runs in your browser.',
 };
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="border-b border-slate-200 dark:border-slate-800">
           <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <Link href="/" className="font-semibold text-lg">
-              Credence AI Academy
+              AI Academy
             </Link>
             <nav className="flex gap-4 text-sm">
               <Link href="/tracks/python" className="hover:text-brand-600">Python</Link>

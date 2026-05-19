@@ -1,6 +1,6 @@
-# credence-ai-academy
+# ai-academy
 
-Interactive, browser-based course covering Python, ML (scikit-learn), AI (transformers), and LLM literacy for the workplace. Built so anyone at Credence can run real Python and real model inference directly in the browser — no server-side execution, no logins, no data leaves the device.
+Interactive, browser-based course covering Python, ML (scikit-learn), AI (transformers), and LLM literacy for the workplace. Runs real Python and real model inference directly in the user's browser — no server-side execution, no logins, no data leaves the device.
 
 ## Status
 
@@ -43,13 +43,14 @@ npm run build
 
 Serve `./out/` from any static host: Azure Static Web Apps, Cloudflare Pages, GitHub Pages, Vercel, S3+CloudFront, an internal Nginx, anything. No Node runtime needed in production.
 
-## Recommended hosting (Credence-specific)
+## Recommended hosting
 
-Credence is an M365 shop. The clean path:
+Deploy targets the build supports:
 
-1. Push this repo to **GitHub** (private) under your org.
-2. Provision an **Azure Static Web App** linked to that repo. Use **Entra ID (Azure AD)** as the auth provider — anyone with a `@credence-llc.com` login can access; nobody else can.
-3. Set the build command to `npm run build` and the output directory to `out`.
+- **GitHub Pages** — what this repo is currently set up for. See the workflow at `.github/workflows/deploy.yml`. Public.
+- **Cloudflare Pages** — drop-in, free, can be gated behind SSO via Cloudflare Access.
+- **Azure Static Web Apps** — best fit for M365 orgs (Entra ID auth out of the box).
+- **Vercel / Netlify / S3+CloudFront / any static host** — works.
 
 Why not SharePoint: SharePoint static-file serving rewrites MIME types and blocks the cross-origin headers Pyodide needs for some features. Don't fight it.
 

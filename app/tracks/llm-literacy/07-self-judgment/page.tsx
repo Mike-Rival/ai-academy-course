@@ -3,7 +3,7 @@ import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
 export const metadata = {
-  title: 'Models Cannot Judge Themselves — Credence AI Academy',
+  title: 'Models Cannot Judge Themselves — AI Academy',
 };
 
 export default function Page() {

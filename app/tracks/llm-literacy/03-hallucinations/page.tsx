@@ -3,7 +3,7 @@ import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
 export const metadata = {
-  title: 'Hallucinations in the Wild — Credence AI Academy',
+  title: 'Hallucinations in the Wild — AI Academy',
 };
 
 export default function Page() {

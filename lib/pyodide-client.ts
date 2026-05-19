@@ -34,9 +34,12 @@ let nextId = 1;
 const pending = new Map<number, (r: RunResult) => void>();
 let preloadOnce: Promise<void> | null = null;
 
+// Respect Next.js basePath so the worker URL works on GH Pages subpath hosting.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 function getWorker(): Worker {
   if (workerSingleton) return workerSingleton;
-  workerSingleton = new Worker('/pyodide-worker.js');
+  workerSingleton = new Worker(`${BASE_PATH}/pyodide-worker.js`);
   workerSingleton.onmessage = (ev: MessageEvent) => {
     const msg = ev.data as { type: string; id: number } & Partial<RunResult>;
     if (msg.type === 'result') {

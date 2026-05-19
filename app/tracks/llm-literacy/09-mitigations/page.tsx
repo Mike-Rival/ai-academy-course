@@ -3,7 +3,7 @@ import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
 export const metadata = {
-  title: 'Mitigations and Their Hidden Costs — Credence AI Academy',
+  title: 'Mitigations and Their Hidden Costs — AI Academy',
 };
 
 export default function Page() {

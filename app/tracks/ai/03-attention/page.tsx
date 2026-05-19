@@ -2,7 +2,7 @@ import LessonShell from '@/components/LessonShell';
 import CodeExercise from '@/components/CodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'Attention, Intuitively — Credence AI Academy' };
+export const metadata = { title: 'Attention, Intuitively — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('ai', '03-attention');

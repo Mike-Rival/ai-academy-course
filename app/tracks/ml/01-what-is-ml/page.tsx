@@ -3,7 +3,7 @@ import CodeExercise from '@/components/CodeExercise';
 import { MultipleChoice } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'What is Machine Learning? — Credence AI Academy' };
+export const metadata = { title: 'What is Machine Learning? — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('ml', '01-what-is-ml');

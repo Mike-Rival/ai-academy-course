@@ -2,7 +2,7 @@ import LessonShell from '@/components/LessonShell';
 import CodeExercise from '@/components/CodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'RAG Basics — Credence AI Academy' };
+export const metadata = { title: 'RAG Basics — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('ai', '08-rag-basics');

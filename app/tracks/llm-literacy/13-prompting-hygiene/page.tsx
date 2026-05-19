@@ -3,7 +3,7 @@ import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
 export const metadata = {
-  title: 'Prompting Hygiene Without Overpromising — Credence AI Academy',
+  title: 'Prompting Hygiene Without Overpromising — AI Academy',
 };
 
 export default function Page() {

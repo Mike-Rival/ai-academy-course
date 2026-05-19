@@ -2,7 +2,7 @@ import LessonShell from '@/components/LessonShell';
 import CodeExercise from '@/components/CodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'AI Capstone — Credence AI Academy' };
+export const metadata = { title: 'AI Capstone — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('ai', '10-capstone');
@@ -25,7 +25,7 @@ export default function Page() {
 
       <h2>The setup</h2>
       <p>
-        A small knowledge base about Credence-style topics, plus a set of test
+        A small knowledge base about course-relevant topics, plus a set of test
         questions with reference answers. You&rsquo;ll:
       </p>
       <ol>

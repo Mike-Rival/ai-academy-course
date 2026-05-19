@@ -2,7 +2,7 @@ import LessonShell from '@/components/LessonShell';
 import CodeExercise from '@/components/CodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'Variables and Printing — Credence AI Academy' };
+export const metadata = { title: 'Variables and Printing — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('python', '01-variables');

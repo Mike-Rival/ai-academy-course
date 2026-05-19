@@ -3,7 +3,7 @@ import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
 export const metadata = {
-  title: 'Privacy and Data Handling — Credence AI Academy',
+  title: 'Privacy and Data Handling — AI Academy',
 };
 
 export default function Page() {
@@ -97,15 +97,11 @@ export default function Page() {
 
       <h2>What your organization probably has</h2>
       <p>
-        Credence (and most organizations) likely has a published AI usage policy,
-        an approved tool list, and possibly an enterprise tenant for one or more
-        AI products with specific data handling terms. Check that policy before
-        applying anything in this lesson — your org&rsquo;s rules supersede
-        general advice.
-      </p>
-      <p className="text-sm text-slate-500">
-        (Replace this paragraph with your organization&rsquo;s specific guidance
-        before deploying the course.)
+        Most organizations have a published AI usage policy, an approved tool
+        list, and possibly an enterprise tenant for one or more AI products
+        with specific data handling terms. Check that policy before applying
+        anything in this lesson — your org&rsquo;s rules supersede general
+        advice.
       </p>
 
       <MultipleChoice

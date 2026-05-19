@@ -3,7 +3,7 @@ import { Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
 export const metadata = {
-  title: 'Capstone: Decide Before You Use — Credence AI Academy',
+  title: 'Capstone: Decide Before You Use — AI Academy',
 };
 
 export default function Page() {

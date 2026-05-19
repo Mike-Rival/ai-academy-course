@@ -2,7 +2,7 @@ import LessonShell from '@/components/LessonShell';
 import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'The Citation Trap — Credence AI Academy' };
+export const metadata = { title: 'The Citation Trap — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('llm-literacy', '05-citation-trap');

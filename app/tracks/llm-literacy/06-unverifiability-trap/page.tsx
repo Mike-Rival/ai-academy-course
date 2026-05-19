@@ -2,7 +2,7 @@ import LessonShell from '@/components/LessonShell';
 import { Categorize, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'The Unverifiability Trap — Credence AI Academy' };
+export const metadata = { title: 'The Unverifiability Trap — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('llm-literacy', '06-unverifiability-trap');

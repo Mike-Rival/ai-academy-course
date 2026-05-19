@@ -2,7 +2,7 @@ import LessonShell from '@/components/LessonShell';
 import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'Prompting — Credence AI Academy' };
+export const metadata = { title: 'Prompting — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('ai', '07-prompting');

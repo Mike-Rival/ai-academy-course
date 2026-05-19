@@ -3,7 +3,7 @@ import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
 export const metadata = {
-  title: 'Why LLMs Feel Trustworthy When They Are Not — Credence AI Academy',
+  title: 'Why LLMs Feel Trustworthy When They Are Not — AI Academy',
 };
 
 export default function Page() {

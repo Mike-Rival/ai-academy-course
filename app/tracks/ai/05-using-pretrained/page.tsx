@@ -2,7 +2,7 @@ import LessonShell from '@/components/LessonShell';
 import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
-export const metadata = { title: 'Using Pre-trained Models — Credence AI Academy' };
+export const metadata = { title: 'Using Pre-trained Models — AI Academy' };
 
 export default function Page() {
   const nav = getLessonNav('ai', '05-using-pretrained');

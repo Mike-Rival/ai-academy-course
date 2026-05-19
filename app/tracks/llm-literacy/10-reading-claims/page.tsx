@@ -3,7 +3,7 @@ import { MultipleChoice, Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
 
 export const metadata = {
-  title: 'Reading "LLMs Are Good at X" Claims — Credence AI Academy',
+  title: 'Reading "LLMs Are Good at X" Claims — AI Academy',
 };
 
 export default function Page() {
