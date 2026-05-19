@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Link from 'next/link';
+import { VERSION, UPDATED } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Credence AI Academy',
@@ -27,8 +28,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
         <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-8">{children}</main>
         <footer className="border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 py-4">
-          <div className="max-w-6xl mx-auto px-4">
-            Runs entirely in your browser. No code is sent to a server.
+          <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-between gap-x-4 gap-y-1">
+            <span>Runs entirely in your browser. No code is sent to a server.</span>
+            <span>
+              v{VERSION} · updated {UPDATED}
+            </span>
           </div>
         </footer>
       </body>

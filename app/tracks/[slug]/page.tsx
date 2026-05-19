@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { tracks, getTrack } from '@/lib/curriculum';
+import TrackProgressView from '@/components/TrackProgressView';
 
 export function generateStaticParams() {
   return tracks.map((t) => ({ slug: t.slug }));
@@ -31,48 +32,7 @@ export default async function TrackPage({
         <p className="text-slate-700 dark:text-slate-300 mt-4 max-w-3xl">{track.description}</p>
       </header>
 
-      <ol className="space-y-2">
-        {track.lessons.map((lesson, i) => {
-          const isAvailable = lesson.status === 'available';
-          const className = `flex items-start gap-4 p-4 border rounded-lg transition ${
-            isAvailable
-              ? 'border-slate-200 dark:border-slate-800 hover:border-brand-500'
-              : 'border-slate-100 dark:border-slate-900 opacity-60'
-          }`;
-          const content = (
-            <>
-              <div className="text-slate-400 font-mono text-sm pt-0.5 w-8">
-                {String(i + 1).padStart(2, '0')}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-semibold">{lesson.title}</span>
-                  <span className="text-xs text-slate-500">~{lesson.estMinutes} min</span>
-                  {!isAvailable && (
-                    <span className="text-xs px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">
-                      coming soon
-                    </span>
-                  )}
-                </div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                  {lesson.summary}
-                </div>
-              </div>
-            </>
-          );
-          return (
-            <li key={lesson.slug}>
-              {isAvailable ? (
-                <Link href={`/tracks/${track.slug}/${lesson.slug}`} className={className}>
-                  {content}
-                </Link>
-              ) : (
-                <div className={className}>{content}</div>
-              )}
-            </li>
-          );
-        })}
-      </ol>
+      <TrackProgressView track={track} />
     </div>
   );
 }
