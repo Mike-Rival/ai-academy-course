@@ -27,7 +27,7 @@ jobs:
       - name: Build
         env:
           # Must match the repo name (so pages serve at /<repo>/).
-          NEXT_PUBLIC_BASE_PATH: /credence-ai-academy
+          NEXT_PUBLIC_BASE_PATH: /ai-academy-course
         run: npm run build
       - name: Add .nojekyll
         run: touch out/.nojekyll
