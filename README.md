@@ -1,19 +1,20 @@
 # ai-academy
 
-Interactive, browser-based course covering Python, ML (scikit-learn), AI (transformers), and LLM literacy for the workplace. Runs real Python and real model inference directly in the user's browser — no server-side execution, no logins, no data leaves the device.
+Interactive, browser-based course covering Python, ML (scikit-learn), AI (transformers), LLM literacy for the workplace, and practical LLM-assisted workflows. Runs real Python and real model inference directly in the user's browser — no server-side execution, no logins, no data leaves the device.
 
 ## Status
 
-**All 44 lessons authored** across four tracks:
+**All 54 lessons authored** across five tracks:
 
 - **Python Basics** (10): variables → types → control flow → loops → functions → lists/dicts → files/strings → numpy → pandas → mini project.
 - **Machine Learning Basics** (10): what-is-ML → linear regression → classification → train/test split → cross-validation → trees & forests → clustering → pipelines → feature engineering → end-to-end project.
 - **AI & Deep Learning** (10): tokenization → embeddings → attention → transformer architecture → pre-trained models → fine-tuning concepts → prompting → RAG basics → evaluation → capstone.
 - **Working with LLMs** (14, no coding required): how LLMs work → trust calibration → hallucinations → conversation rot → citations → unverifiability trap → self-judgment → validation framework → mitigations → reading claims critically → where they help → privacy → prompting hygiene → capstone.
+- **Getting Work Done with LLMs** (10, no coding required): chat → workflow decomposition → reusable prompts and checklists → documents (summarize/extract/compare) → writing without losing your voice → research and sources → text ↔ tables → persistent context hygiene → agents and automations → measuring whether it helps → capstone (redesign one recurring workflow).
 
 Each lesson is fully interactive: code lessons run real Python in the browser with auto-graded exercises; non-code lessons use multiple choice, categorize, and reflection components.
 
-The home page features **Working with LLMs** as the "start here" track (it needs no coding and has the broadest audience); the three coding tracks are grouped beneath it. Which track is featured is controlled by the `featured`, `badge`, and `highlights` fields in [`lib/curriculum.ts`](./lib/curriculum.ts).
+The home page features **Working with LLMs** as the "start here" track (it needs no coding and has the broadest audience). Beneath it, other no-code tracks (currently **Getting Work Done with LLMs**, the practical sequel) are listed under "No coding required", and the coding tracks under "Coding tracks". Which track is featured is controlled by the `featured`, `badge`, and `highlights` fields in [`lib/curriculum.ts`](./lib/curriculum.ts); the grouping is driven by each track's `kind` (`'no-code'` or `'coding'`).
 
 ## Stack
 

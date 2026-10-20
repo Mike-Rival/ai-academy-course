@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import LessonShell from '@/components/LessonShell';
 import { Reflection } from '@/components/NonCodeExercise';
 import { getLessonNav } from '@/lib/curriculum';
@@ -265,6 +266,12 @@ export default function Page() {
         If you took one thing from the track: <strong>tone is not evidence,
         and confident ignorance is worse than honest ignorance.</strong> The
         rest is application.
+      </p>
+      <p>
+        The natural next step is{' '}
+        <Link href="/tracks/llm-workflows">Getting Work Done with LLMs</Link>, which
+        takes this framework and applies it to real workflows: documents, writing,
+        research, spreadsheets, and automations.
       </p>
       <p>
         From here, if you&rsquo;d like to understand the technical side of how
