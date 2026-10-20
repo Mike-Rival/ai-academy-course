@@ -52,6 +52,28 @@ export const tracks: TrackMeta[] = [
     ],
   },
   {
+    slug: 'ai-coding',
+    title: 'Coding with AI Assistants',
+    subtitle:
+      'Specs, small units, tests, diffs, agents — and how to catch confident wrong code.',
+    audience:
+      'For developers (Python Basics level or above) who use or plan to use AI coding tools.',
+    description:
+      'A working method for autocomplete, chat, and agentic coding tools: write tasks the model cannot misread, keep units small, let tests do the judging, read every diff, and know the failure modes well enough to spot them in code that compiles and looks clean. Tools are named generically; the habits transfer.',
+    lessons: [
+      { slug: '01-what-an-assistant-sees', title: 'What a Coding Assistant Actually Sees', summary: 'Autocomplete vs chat vs agents; the context window is all it has; why "it compiled" is weak evidence.', estMinutes: 12, status: 'available' },
+      { slug: '02-writing-the-task', title: 'Writing a Task the Model Cannot Misread', summary: 'Inputs, outputs, constraints, examples, done-criteria, non-goals. The spec is the test.', estMinutes: 15, status: 'available' },
+      { slug: '03-small-units', title: 'The Loop: Ask, Read the Diff, Run, Repeat', summary: 'Small testable units beat big asks. Read every line you accept. Checkpoint with git.', estMinutes: 12, status: 'available' },
+      { slug: '04-tests-are-the-check', title: 'Tests Are the Verification Layer', summary: 'Tests first, adversarial cases, and why the model never grades its own output.', estMinutes: 15, status: 'available' },
+      { slug: '05-reading-generated-code', title: 'Reading Generated Code: The Failure Catalog', summary: 'Hallucinated APIs, wrong formulas, boundary errors, swallowed exceptions — and three clean-looking bugs to find.', estMinutes: 18, status: 'available' },
+      { slug: '06-debugging-with-an-assistant', title: 'Debugging Without Being Led in Circles', summary: 'Full error, minimal repro, a hypothesis before a fix, a fresh thread when it loops.', estMinutes: 15, status: 'available' },
+      { slug: '07-context-for-repos', title: 'Context Engineering for a Codebase', summary: 'Project instruction files, what goes where, pointing at files instead of pasting, why sessions degrade.', estMinutes: 12, status: 'available' },
+      { slug: '08-agentic-workflows', title: 'Agentic Workflows: Plan, Implement, Verify', summary: 'When to let an agent run, checkpoints, reviewing multi-file diffs, compound-error math, cost.', estMinutes: 15, status: 'available' },
+      { slug: '09-security-and-provenance', title: 'Security, Secrets, and Provenance', summary: 'Secrets in prompts, hallucinated packages, license provenance, prompt injection, generated shell commands.', estMinutes: 15, status: 'available' },
+      { slug: '10-capstone', title: 'Capstone: Ship a Small Feature With a Verification Log', summary: 'Spec → tests → implement with an assistant → review → log what was verified and how.', estMinutes: 25, status: 'available' },
+    ],
+  },
+  {
     slug: 'ml',
     title: 'Machine Learning Basics',
     subtitle: 'Regression, classification, evaluation, pipelines — with scikit-learn.',

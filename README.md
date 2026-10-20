@@ -1,19 +1,20 @@
 # ai-academy
 
-Interactive, browser-based course covering Python, ML (scikit-learn), AI (transformers), and LLM literacy for the workplace. Runs real Python and real model inference directly in the user's browser — no server-side execution, no logins, no data leaves the device.
+Interactive, browser-based course covering Python, ML (scikit-learn), AI (transformers), LLM literacy for the workplace, and coding with AI assistants. Runs real Python and real model inference directly in the user's browser — no server-side execution, no logins, no data leaves the device.
 
 ## Status
 
-**All 44 lessons authored** across four tracks:
+**All 54 lessons authored** across five tracks:
 
 - **Python Basics** (10): variables → types → control flow → loops → functions → lists/dicts → files/strings → numpy → pandas → mini project.
+- **Coding with AI Assistants** (10, for developers): what the assistant sees → writing the task → the ask/read/run loop → tests as the check → reading generated code (failure catalog) → debugging → context for a codebase → agentic workflows → security & provenance → capstone with a verification log.
 - **Machine Learning Basics** (10): what-is-ML → linear regression → classification → train/test split → cross-validation → trees & forests → clustering → pipelines → feature engineering → end-to-end project.
 - **AI & Deep Learning** (10): tokenization → embeddings → attention → transformer architecture → pre-trained models → fine-tuning concepts → prompting → RAG basics → evaluation → capstone.
 - **Working with LLMs** (14, no coding required): how LLMs work → trust calibration → hallucinations → conversation rot → citations → unverifiability trap → self-judgment → validation framework → mitigations → reading claims critically → where they help → privacy → prompting hygiene → capstone.
 
 Each lesson is fully interactive: code lessons run real Python in the browser with auto-graded exercises; non-code lessons use multiple choice, categorize, and reflection components.
 
-The home page features **Working with LLMs** as the "start here" track (it needs no coding and has the broadest audience); the three coding tracks are grouped beneath it. Which track is featured is controlled by the `featured`, `badge`, and `highlights` fields in [`lib/curriculum.ts`](./lib/curriculum.ts).
+The home page features **Working with LLMs** as the "start here" track (it needs no coding and has the broadest audience); the four coding tracks are grouped beneath it. Which track is featured is controlled by the `featured`, `badge`, and `highlights` fields in [`lib/curriculum.ts`](./lib/curriculum.ts).
 
 ## Stack
 
