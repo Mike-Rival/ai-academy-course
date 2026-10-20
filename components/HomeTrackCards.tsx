@@ -179,6 +179,8 @@ export default function HomeTrackCards() {
   const anyProgress = hydrated && completed.size > 0;
   const featured = tracks.filter((t) => t.featured);
   const rest = tracks.filter((t) => !t.featured);
+  const noCode = rest.filter((t) => t.kind === 'no-code');
+  const coding = rest.filter((t) => t.kind === 'coding');
 
   return (
     <div className="space-y-10">
@@ -195,7 +197,29 @@ export default function HomeTrackCards() {
         </section>
       )}
 
-      {rest.length > 0 && (
+      {noCode.length > 0 && (
+        <section>
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold">No coding required</h2>
+            <p className="text-sm text-slate-500 mt-1">
+              Continue from the literacy track: how to actually design LLM-assisted work.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {noCode.map((t) => (
+              <TrackCard
+                key={t.slug}
+                track={t}
+                p={progressFor(t, completed)}
+                hydrated={hydrated}
+                anyProgress={anyProgress}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {coding.length > 0 && (
         <section>
           <div className="mb-4">
             <h2 className="text-xl font-semibold">Coding tracks</h2>
@@ -205,7 +229,7 @@ export default function HomeTrackCards() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {rest.map((t) => (
+            {coding.map((t) => (
               <TrackCard
                 key={t.slug}
                 track={t}

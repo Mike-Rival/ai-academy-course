@@ -16,6 +16,8 @@ export type TrackMeta = {
   audience: string;
   description: string;
   lessons: LessonMeta[];
+  /** Whether the track requires writing code. Drives grouping on the home page. */
+  kind: 'no-code' | 'coding';
   /** Featured tracks render as a full-width "start here" card on the home page. */
   featured?: boolean;
   /** Short badge shown on the home card, e.g. "No coding required". */
@@ -27,6 +29,7 @@ export type TrackMeta = {
 export const tracks: TrackMeta[] = [
   {
     slug: 'python',
+    kind: 'coding',
     title: 'Python Basics',
     subtitle: 'Variables, control flow, data structures, numpy, pandas.',
     audience: 'For learners new to programming or new to Python.',
@@ -52,7 +55,31 @@ export const tracks: TrackMeta[] = [
     ],
   },
   {
+    slug: 'ai-coding',
+    kind: 'coding',
+    title: 'Coding with AI Assistants',
+    subtitle:
+      'Specs, small units, tests, diffs, agents — and how to catch confident wrong code.',
+    audience:
+      'For developers (Python Basics level or above) who use or plan to use AI coding tools.',
+    description:
+      'A working method for autocomplete, chat, and agentic coding tools: write tasks the model cannot misread, keep units small, let tests do the judging, read every diff, and know the failure modes well enough to spot them in code that compiles and looks clean. Tools are named generically; the habits transfer.',
+    lessons: [
+      { slug: '01-what-an-assistant-sees', title: 'What a Coding Assistant Actually Sees', summary: 'Autocomplete vs chat vs agents; the context window is all it has; why "it compiled" is weak evidence.', estMinutes: 12, status: 'available' },
+      { slug: '02-writing-the-task', title: 'Writing a Task the Model Cannot Misread', summary: 'Inputs, outputs, constraints, examples, done-criteria, non-goals. The spec is the test.', estMinutes: 15, status: 'available' },
+      { slug: '03-small-units', title: 'The Loop: Ask, Read the Diff, Run, Repeat', summary: 'Small testable units beat big asks. Read every line you accept. Checkpoint with git.', estMinutes: 12, status: 'available' },
+      { slug: '04-tests-are-the-check', title: 'Tests Are the Verification Layer', summary: 'Tests first, adversarial cases, and why the model never grades its own output.', estMinutes: 15, status: 'available' },
+      { slug: '05-reading-generated-code', title: 'Reading Generated Code: The Failure Catalog', summary: 'Hallucinated APIs, wrong formulas, boundary errors, swallowed exceptions — and three clean-looking bugs to find.', estMinutes: 18, status: 'available' },
+      { slug: '06-debugging-with-an-assistant', title: 'Debugging Without Being Led in Circles', summary: 'Full error, minimal repro, a hypothesis before a fix, a fresh thread when it loops.', estMinutes: 15, status: 'available' },
+      { slug: '07-context-for-repos', title: 'Context Engineering for a Codebase', summary: 'Project instruction files, what goes where, pointing at files instead of pasting, why sessions degrade.', estMinutes: 12, status: 'available' },
+      { slug: '08-agentic-workflows', title: 'Agentic Workflows: Plan, Implement, Verify', summary: 'When to let an agent run, checkpoints, reviewing multi-file diffs, compound-error math, cost.', estMinutes: 15, status: 'available' },
+      { slug: '09-security-and-provenance', title: 'Security, Secrets, and Provenance', summary: 'Secrets in prompts, hallucinated packages, license provenance, prompt injection, generated shell commands.', estMinutes: 15, status: 'available' },
+      { slug: '10-capstone', title: 'Capstone: Ship a Small Feature With a Verification Log', summary: 'Spec → tests → implement with an assistant → review → log what was verified and how.', estMinutes: 25, status: 'available' },
+    ],
+  },
+  {
     slug: 'ml',
+    kind: 'coding',
     title: 'Machine Learning Basics',
     subtitle: 'Regression, classification, evaluation, pipelines — with scikit-learn.',
     audience: 'For learners comfortable with Python who want practical ML.',
@@ -73,6 +100,7 @@ export const tracks: TrackMeta[] = [
   },
   {
     slug: 'ai',
+    kind: 'coding',
     title: 'AI & Deep Learning',
     subtitle: 'Tokenization, embeddings, transformers, using pre-trained models.',
     audience: 'For learners who know ML basics and want to understand modern AI.',
@@ -93,6 +121,7 @@ export const tracks: TrackMeta[] = [
   },
   {
     slug: 'llm-literacy',
+    kind: 'no-code',
     title: 'Working with LLMs',
     featured: true,
     badge: 'No coding required',
@@ -122,6 +151,30 @@ export const tracks: TrackMeta[] = [
       { slug: '12-privacy', title: 'Privacy and Data Handling', summary: 'What not to paste into a public chatbot.', estMinutes: 10, status: 'available' },
       { slug: '13-prompting-hygiene', title: 'Prompting Hygiene Without Overpromising', summary: 'What helps, what does not.', estMinutes: 10, status: 'available' },
       { slug: '14-capstone', title: 'Capstone: Decide Before You Use', summary: 'A workplace task, a decision framework, a verification plan.', estMinutes: 20, status: 'available' },
+    ],
+  },
+  {
+    slug: 'llm-workflows',
+    kind: 'no-code',
+    title: 'Getting Work Done with LLMs',
+    badge: 'No coding required',
+    subtitle:
+      'Designing LLM-assisted workflows that hold up: decomposition, templates, verification, measurement.',
+    audience:
+      'For anyone who finished Working with LLMs and wants to put it to work. No coding required.',
+    description:
+      'The practical sequel to the literacy track. Each lesson takes one kind of everyday work — documents, writing, research, spreadsheets, automations — and shows how to split it into the parts an LLM can do and the parts you keep, with a verification step built into every hand-off. No magic prompts, no vendor hype: just workflows you can defend and measure.',
+    lessons: [
+      { slug: '01-from-chat-to-workflow', title: 'From Chatting to a Workflow', summary: 'Decompose a task into generate, judge, and verify steps. Hand off only what you can check.', estMinutes: 12, status: 'available' },
+      { slug: '02-reusable-prompts', title: 'Reusable Prompts and Checklists', summary: 'Templates with slots, explicit output formats, and a prompt library you version and test.', estMinutes: 14, status: 'available' },
+      { slug: '03-working-with-documents', title: 'Summarize, Extract, Compare', summary: 'The document workflow with verification built in: quoted passages, spot checks, diffs for silent omissions.', estMinutes: 15, status: 'available' },
+      { slug: '04-writing-workflows', title: 'Writing With an LLM Without Losing Your Voice', summary: 'Outline, draft, critique, edit. Use the model as critic, not only as drafter.', estMinutes: 14, status: 'available' },
+      { slug: '05-research-and-sources', title: 'Research With Web-Enabled and Deep-Research Modes', summary: 'Triangulate, open the sources, know when to stop.', estMinutes: 15, status: 'available' },
+      { slug: '06-structured-data', title: 'Turning Text Into Tables and Back', summary: 'Extraction to tables, JSON, and formulas, validated by whatever consumes them.', estMinutes: 14, status: 'available' },
+      { slug: '07-persistent-context', title: 'Custom Instructions, Projects, Memory, and Files', summary: 'What persistent context helps with, how it goes stale, and how to keep it clean.', estMinutes: 12, status: 'available' },
+      { slug: '08-agents-and-automations', title: 'Agents and Automations at Work', summary: 'Scheduled tasks, connectors, browsing agents: bounded scope, monitoring, kill switches.', estMinutes: 16, status: 'available' },
+      { slug: '09-measuring-whether-it-helps', title: 'Is It Actually Helping?', summary: 'Self-reported time savings are unreliable. Pick a metric and run a small before/after on yourself.', estMinutes: 14, status: 'available' },
+      { slug: '10-capstone', title: 'Capstone: Redesign One Recurring Workflow', summary: 'Map the steps, assign human or LLM, define verification, plan the measurement, set a stop rule.', estMinutes: 25, status: 'available' },
     ],
   },
 ];
