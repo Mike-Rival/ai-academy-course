@@ -24,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/tracks/ml" className="hover:text-brand-600">ML</Link>
               <Link href="/tracks/ai" className="hover:text-brand-600">AI</Link>
               <Link href="/tracks/llm-literacy" className="hover:text-brand-600">LLM Literacy</Link>
+              <Link href="/tracks/llm-workflows" className="hover:text-brand-600">LLM Workflows</Link>
             </nav>
           </div>
         </header>
