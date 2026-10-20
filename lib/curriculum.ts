@@ -16,6 +16,12 @@ export type TrackMeta = {
   audience: string;
   description: string;
   lessons: LessonMeta[];
+  /** Featured tracks render as a full-width "start here" card on the home page. */
+  featured?: boolean;
+  /** Short badge shown on the home card, e.g. "No coding required". */
+  badge?: string;
+  /** A few concrete takeaways, shown on the featured home card. */
+  highlights?: string[];
 };
 
 export const tracks: TrackMeta[] = [
@@ -88,9 +94,17 @@ export const tracks: TrackMeta[] = [
   {
     slug: 'llm-literacy',
     title: 'Working with LLMs',
+    featured: true,
+    badge: 'No coding required',
+    highlights: [
+      'Why fluent, confident output is the weakest evidence of correctness',
+      'A four-question test for deciding whether to use an LLM on a task',
+      'What RAG, agents, and fine-tuning actually fix — and what they do not',
+      'What not to paste into a chatbot, and prompting habits that hold up',
+    ],
     subtitle:
       'Risk literacy for the workplace. How LLMs fail, when to trust them, when not to.',
-    audience: 'No coding required. For everyone who uses or evaluates AI tools at work.',
+    audience: 'For everyone who uses or evaluates AI tools at work — no technical background needed.',
     description:
       'This track teaches risk literacy, not prescriptions. Every lesson shows failure modes alongside benefits so you can decide for yourself when an LLM is worth using and how to verify the output.',
     lessons: [
@@ -111,6 +125,10 @@ export const tracks: TrackMeta[] = [
     ],
   },
 ];
+
+export function getTrackMinutes(track: TrackMeta): number {
+  return track.lessons.reduce((sum, l) => sum + l.estMinutes, 0);
+}
 
 export function getTrack(slug: string): TrackMeta | undefined {
   return tracks.find((t) => t.slug === slug);

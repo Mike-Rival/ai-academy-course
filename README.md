@@ -13,6 +13,8 @@ Interactive, browser-based course covering Python, ML (scikit-learn), AI (transf
 
 Each lesson is fully interactive: code lessons run real Python in the browser with auto-graded exercises; non-code lessons use multiple choice, categorize, and reflection components.
 
+The home page features **Working with LLMs** as the "start here" track (it needs no coding and has the broadest audience); the three coding tracks are grouped beneath it. Which track is featured is controlled by the `featured`, `badge`, and `highlights` fields in [`lib/curriculum.ts`](./lib/curriculum.ts).
+
 ## Stack
 
 | Layer | Choice | Why |
